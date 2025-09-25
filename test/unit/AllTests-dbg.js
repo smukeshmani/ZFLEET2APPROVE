@@ -1,0 +1,5 @@
+sap.ui.define([
+	"ZGBC_FLEET_RETURN_APPROVE/ZGBC_FLEET_RETURN_APPROVE/test/unit/controller/View1.controller"
+], function () {
+	"use strict";
+});

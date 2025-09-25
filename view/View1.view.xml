@@ -1,0 +1,174 @@
+<mvc:View controllerName="ZGBC_FLEET_RETURN_APPROVE.ZGBC_FLEET_RETURN_APPROVE.controller.View1" xmlns:mvc="sap.ui.core.mvc"	displayBlock="true" xmlns="sap.m"
+          xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout">
+	<Shell id="shell">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}" titleAlignment = "Center">
+				<content>
+						<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdEmpDetail"
+						              editable="false" 
+						              layout="ResponsiveGridLayout"
+						              title="Service Request Details"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+								      adjustLabelSpan="false"
+								      emptySpanXL="0"
+									  emptySpanL="0"
+									  emptySpanM="0"
+									  emptySpanS="0"
+							          columnsXL="2"
+								      columnsL="2"
+									  columnsM="1"
+									  singleContainerFullSize="false">
+							<f:content>
+								    <core:Title text="" />
+								  	<Label text="Request ID" design="Bold"/>
+								    <Text id="idRequestId" text="{/RequestId}"  ></Text>
+									<Label text="Employee Number"/>
+								    <Text id="idPernr" text="{/Pernr}" ></Text>
+									<Label text="Employee Name"/>
+									<Text id="idNameEn" text="{/NameEn}" ></Text>
+									<Label text="Employee Name(Arabic)"/>
+									<Text id="idNameAr" text="{/NameAr}" ></Text>
+									<Label text="Position Code"/>
+									<Text text="{/PositionId}" id="idPositionCode"></Text>
+									<Label text="Position"/>
+									<Text text="{/PositionTextEn}" id="idPositionEn"></Text>
+									<Label text="Position(Arabic)"/>
+									<Text text="{/PositionTextAr}" id="idPositionAr"></Text>
+								    <Label text="Department"/>
+									<Text text="{/DepartmentEn}" id="idDepartmentEn"></Text>
+									<Label text="Department(Arabic)"/>
+									<Text text="{/DepartmentAr}" id="idDepartmentAr"></Text>
+								  
+								    <core:Title text="" />
+								    <Label text=""/>
+								    <Text text="" id="Blank"></Text>
+									<Label text="CompanyCode"/>
+									<Text text="{/Cocd}" id="idCocd"></Text>
+									<Label text="Company name"/>
+									<Text text="{/CocdDesc}" id="idCompanyName"></Text>
+									<Label text="Employee Grade/Group ID" />
+									<Text id="idEmpSubGroup" text ="{/EmpSubgroup}"></Text>
+								    <Label text="Employee Grade/Group Desc." />
+									<Text id="idEmpSubGroupDesc" text="{/EmpSubgroupDesc}"></Text>
+									<Label text="Iquama No"/>
+									<Text id="idIquama" text="{/IdNoEn}" ></Text>
+                                    <Label text="Driving license No"/>
+									<Text id="idDl" text="{/Dl}" ></Text>
+							</f:content>
+					 	 </f:SimpleForm>
+					</VBox>
+					<!--Vehicle type -->
+						<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdVehicleSelection"
+						              editable="false" 
+						              layout="ResponsiveGridLayout"
+						              title="Vehicle Details"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+								      adjustLabelSpan="false"
+								      emptySpanXL="0"
+									  emptySpanL="0"
+									  emptySpanM="0"
+									  emptySpanS="0"
+							          columnsXL="2"
+								      columnsL="2"
+									  columnsM="1"
+									  singleContainerFullSize="false">
+							 <f:content>
+							 	<core:Title text="" />
+						    	<Label text="Vehicle ID" required="true"/>
+				        	    <Text id="idVehicleId" text="{/ReturnHeaderToItemNav/results/0/VehicleId}" ></Text>
+				        	    <Label text="Vehicle Name"/>
+				        	    <Text id="idVehicleName" text="{/ReturnHeaderToItemNav/results/0/VehicleText}" ></Text>
+				        	    <Label text="Vehicle Number"/>
+				        	    <Text id="idVehicleNumber" text="{/ReturnHeaderToItemNav/results/0/VehicleNo}" ></Text>
+				        	    <core:Title text="" />
+				        	    <Label text="Plant" required="true"/>
+				        	    <Text id="idPlant" text="{/ReturnHeaderToItemNav/results/0/VehiclePlant}" ></Text>
+				        	    <Label text="Location"/>
+				        	    <Text id="idLocation" text="{/ReturnHeaderToItemNav/results/0/VehicleLoc}" ></Text>
+							 </f:content>
+							 </f:SimpleForm>
+							</VBox>
+							
+					    <VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="IdApprovalChecks"
+						              editable="false" 
+						              layout="ResponsiveGridLayout"
+						              title="Approval Activities"
+						              labelSpanXL="4"
+									  labelSpanL="4"
+									  labelSpanM="12"
+									  labelSpanS="12"
+									  singleContainerFullSize="true"
+									  visible = "{localModel3>/ApprovalChecksVisible}">
+							 <f:content>
+				        	    <CheckBox text="Deduction Applicable" id="idfleetcheck1"  selected="false" visible="{localModel3>/DeductionApplicable}" 
+				        	     select = 'showDeductionAmount'  wrapping="true" width="200px">
+				        	    	<layoutData>
+										<l:GridData linebreak="true"
+											indentL="1"
+											indentM="1" />
+									</layoutData>
+				        	    </CheckBox>
+				        	    <CheckBox text="Performed Inspection" id="idfleetcheck12"  selected="false" visible="{localModel3>/InspectionPerformed}"
+				        	         wrapping="true" width="200px">
+				        	    	<layoutData>
+										<l:GridData linebreak="true"
+											indentL="1"
+											indentM="1" />
+									</layoutData>
+				        	    </CheckBox>
+				        	     <CheckBox text="Unit returned" id="idfleetcheck13"  selected="false" visible="{localModel3>/UnitReturned}" wrapping="true" width="200px">
+				        	    	<layoutData>
+										<l:GridData linebreak="true"
+											indentL="1"
+											indentM="1" />
+									</layoutData>
+				        	    </CheckBox>
+				     
+				        	    <CheckBox text="TAMM Updated" id="idfleetcheck14"  selected="false" visible="{localModel3>/TammUpdatedVisbile}" wrapping="true" width="200px">
+				        	    	<layoutData>
+										<l:GridData linebreak="true"
+											indentL="1"
+											indentM="1" />
+									</layoutData>
+				        	    </CheckBox>
+				        	    
+				        	    <CheckBox text="Cost Center Updated/Asset ID created" id="idfincheck11"  selected="false" visible="{localModel3>/CCUpdatedVisible}" wrapping="true" width="200px">
+				        	    	<layoutData>
+										<l:GridData linebreak="true"
+											indentL="1"
+											indentM="1" />
+									</layoutData>
+				        	    </CheckBox>
+				        	    <Label text="Deduction Amount" visible="{localModel3>/DeductionAmountVisible}" />
+							 	<Input id="idDeductionAmount" value="{localModel>/DeductionAmount}" placeholder="Deduction Amount"  
+							 	 visible="{localModel3>/DeductionAmountVisible}" maxLength = "15" ></Input>
+							  </f:content>
+							 </f:SimpleForm>
+							</VBox>
+							</content>
+				<footer>
+		        	 <OverflowToolbar id="otbFooter">
+				     <ToolbarSpacer/>
+				     <Button type="Emphasized" text="Save" press="onApprove" width="200px" id = "IdApprove" visible="{localModel3>/ApproveRequestVisible}" >
+			   		 <layoutData>
+			   		 <OverflowToolbarLayoutData priority="NeverOverflow" />
+			   		 </layoutData>
+			   		 </Button>
+		    		 <ToolbarSpacer/>
+			         </OverflowToolbar>
+	           	</footer>
+			</Page>
+		</pages>
+	</App>
+	</Shell>
+</mvc:View>

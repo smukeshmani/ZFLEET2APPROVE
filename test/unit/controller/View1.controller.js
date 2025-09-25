@@ -1,0 +1,1 @@
+sap.ui.define(["ZGBC_FLEET_RETURN_APPROVE/ZGBC_FLEET_RETURN_APPROVE/controller/View1.controller"],function(t){"use strict";QUnit.module("View1 Controller");QUnit.test("I should test the View1 controller",function(e){var n=new t;n.onInit();e.ok(n)})});
