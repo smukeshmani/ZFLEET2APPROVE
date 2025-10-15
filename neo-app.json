@@ -41,19 +41,19 @@
       "path": "/sap/opu/odata",
       "target": {
         "type": "destination",
-        "name": "GATEWAYDEV_NBAA",
+        "name": "DEV_BRN_786",
         "entryPath": "/sap/opu/odata"
       },
-      "description": "DEVS4"
+      "description": "DEV_BRN_786"
     },
     {
       "path": "/sap/bc/ui5_ui5",
       "target": {
         "type": "destination",
-        "name": "GATEWAYDEV_NBAA",
+        "name": "DEV_BRN_HEC",
         "entryPath": "/sap/bc/ui5_ui5"
       },
-      "description": "DEVS4"
+      "description": "DEV_BRN_HEC"
     }
   ],
   "sendWelcomeFileRedirect": true

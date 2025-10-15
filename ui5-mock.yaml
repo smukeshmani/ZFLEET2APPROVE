@@ -1,0 +1,41 @@
+specVersion: "3.1"
+metadata:
+  name: zgbc_fleet_return_approve.zgbc_fleet_return_approve
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://93.112.9.44:8060/
+            client: "786"
+            destination: DEV_BRN_786
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        component: ZGBC_FLEET_RETURN_APPROVE.ZGBC_FLEET_RETURN_APPROVE
+        ui5Theme: sap_fiori_3
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZGBC_FLEET_PROCESS2_SRV
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/ZGBC_FLEET_PROCESS2_SRV/data
+            generateMockData: true
+        annotations: []
